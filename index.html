@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Java-tree : Yet another Java tree structure" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Java-tree</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yfpeng/java-tree">View on GitHub</a>
+
+          <h1 id="project_title">Java-tree</h1>
+          <h2 id="project_tagline">Yet another Java tree structure</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yfpeng/java-tree/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yfpeng/java-tree/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="yet-another-java-tree-structure" class="anchor" href="#yet-another-java-tree-structure"><span class="octicon octicon-link"></span></a>Yet another Java tree structure</h1>
+
+<p>There are a couple of tree data structures in Java, such as <a href="http://docs.oracle.com/javase/6/docs/api/javax/swing/tree/DefaultMutableTreeNode.html"><code>DefaultMutableTreeNode</code></a> in JDK Swing, <a href="http://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/trees/Tree.html"><code>Tree</code></a> in Stanford parser package, and other toy codes. But none of these are sufficient yet small enough for general purpose.</p>
+
+<h3>
+<a name="contribution-" class="anchor" href="#contribution-"><span class="octicon octicon-link"></span></a>Contribution (:))</h3>
+
+<p>This project attempts to provide another general-purpose tree data structure in Java. The difference between this and others are</p>
+
+<ul>
+<li> <strong>Totally free</strong>. You can use it anywhere (except in your homework :P)</li>
+<li> <strong>Small but general enough</strong>. I put everything of the data structure in one class file, so it would be easy to copy/paste.</li>
+<li> <strong>Not just a toys</strong>. I am aware of dozens of Java tree codes that can only handle binary trees or limited operations. This <code>TreeNode</code> is much more than that. It provides different ways of visiting nodes, such as preorder, postorder, breadthfirst, leaves, path to root, etc. Moreover, iterators are provided too for the sufficiency.</li>
+<li> <strong>More utils will be added</strong>. I am willing to add more operations to make this project comprehensive, especially if you send a request through <a href="https://github.com/yfpeng/java-tree"><strong>github</strong></a>.</li>
+</ul><h3>
+<a name="treenode" class="anchor" href="#treenode"><span class="octicon octicon-link"></span></a>TreeNode</h3>
+
+<p>A <code>TreeNode</code> may have at most one parent and 0 or more children. It provides operations for examining and modifying a node's parent and children and also operations for examining the tree that the node is a part of. A node's tree is the set of all nodes that can be reached by starting at the node and following all the possible links to parents and children. A node with no parent is the root of its tree; a node with no children is a leaf. A tree may consist of many subtrees, each node acting as the root for its own subtree.</p>
+
+<p>A <code>TreeNode</code> provides iterator for efficiently traversing a tree or subtree in various orders or for following the path between two nodes. A <code>TreeNode</code> may also hold a reference to a user object, the use of which is left to the user. Asking a <code>TreeNode</code> for its string representation with <em>toString()</em> returns the string representation of its user object.</p>
+
+<p>This is not a thread safe class. If you intend to use a <code>TreeNode</code> (or a tree of TreeNodes) in more than one thread, you need to do your own synchronizing. A good convention to adopt is synchronizing on the root node of a tree. </p>
+
+<p>Most source code is copied from <code>DefaultMutableTreeNode</code> by Rob Davis, and modified for general purposes. </p>
+
+<h3>
+<a name="print-treenode" class="anchor" href="#print-treenode"><span class="octicon octicon-link"></span></a>Print TreeNode</h3>
+
+<p>This project provides two formats to print out a tree structure. One is a human readable format (<code>TreeString</code>), like</p>
+
+<pre><code>└ a
+  ├ b
+  ├ c
+  │ ├ e
+  │ └ f
+  └ d
+</code></pre>
+
+<p>The other is Penn Treebank format (<code>PtbString</code>), like</p>
+
+<pre><code>(a b (c (e f) d)
+</code></pre>
+
+<p>The following code snippet shows how to print a <code>TreeNode</code>.</p>
+
+<div class="highlight highlight-java"><pre><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">PtbString</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">treeNode</span><span class="o">));</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">TreeString</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">treeNode</span><span class="o">));</span>
+</pre></div>
+
+<h3>
+<a name="other-utils" class="anchor" href="#other-utils"><span class="octicon octicon-link"></span></a>Other utils</h3>
+
+<p>comming soon...</p>
+
+<p>Some frequently used utils will be provded, such as <em>lowest common ancestor</em>, <em>tregrep</em>, etc.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Java-tree maintained by <a href="https://github.com/yfpeng">yfpeng</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
